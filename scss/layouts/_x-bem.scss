@@ -1,0 +1,46 @@
+@use '../utils/breakpoints' as bp;
+@use '../utils/functions' as f;
+@use '../utils/fonts' as font;
+
+.karla {
+    font-family: font.$karla;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.karla-bold {
+    font-family: font.$karla;
+    font-weight: 700;
+}
+
+a {
+    color: var(--x-l-gray);
+}
+
+.a-border {
+    border: var(--x-l-gray) 2px solid;
+}
+
+p {
+    line-height: 1.5;
+}
+
+a, p {
+    font-family: font.$karla;
+    font-weight: 700;
+}
+
+h1, h2, h3 {
+    font-family: font.$DM-serif-display;
+    font-weight: 400;
+    line-height: 1;
+}
+
+
+
+// REMOVE LATER
+// section.intro,
+// section.features,
+// section.more-info {
+//     display: none;
+// }

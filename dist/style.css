@@ -425,12 +425,6 @@ h1, h2, h3 {
   line-height: 1;
 }
 
-REMOVE LATER section.intro,
-section.features,
-section.more-info {
-  display: none;
-}
-
 footer {
   position: relative;
   margin-top: auto;

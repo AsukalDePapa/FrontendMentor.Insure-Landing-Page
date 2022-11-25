@@ -19,6 +19,28 @@ a {
 
 .a-border {
     border: var(--x-l-gray) 2px solid;
+
+    @include bp.breakpointMin(xmedium-screen) {
+        border-color: var(--x-d-violet);
+        color: var(--x-d-violet);
+
+        &:hover {
+            background-color: var(--x-d-violet);
+            color: var(--x-l-gray);
+        }
+    }
+}
+
+.a-border-b {
+    border: var(--x-l-gray) 2px solid;
+
+    @include bp.breakpointMin(xmedium-screen) {
+
+        &:hover {
+            background-color: var(--x-l-gray);
+            color: var(--x-d-violet);
+        }
+    }
 }
 
 p {
@@ -38,9 +60,10 @@ h1, h2, h3 {
 
 
 
-// REMOVE LATER
-// section.intro,
-// section.features,
-// section.more-info {
-//     display: none;
-// }
+REMOVE LATER
+section.intro,
+section.features,
+section.more-info
+{
+    display: none;
+}

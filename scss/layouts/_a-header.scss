@@ -15,10 +15,10 @@ header {
 nav {
     background-color: var(--x-d-violet);
     position: fixed;
-    top: f.rem(64);
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 100vh;
+    height: 93vh;
     transform: translateY(200%);
     transition: transform .3s ease-in;
 
@@ -27,16 +27,16 @@ nav {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: f.rem(32);
+        padding: f.rem(64);
         gap: f.rem(32);
 
         li {
             display: grid;
             place-content: center;
-            width: 100%;
+
             a {
                 text-transform: uppercase;
-                color: white;
+                color: var(--x-l-gray);
                 letter-spacing: 2px;
             }
 
@@ -56,11 +56,49 @@ nav {
     background-repeat: no-repeat;
     background-position-y: 90%;
     background-size: contain;
+
+    @include bp.breakpointMin(xmedium-screen) {
+        background-image: none;
+        background-color: unset;
+
+        transform: translateY(0);
+        position: unset;
+        height: unset;
+        width: unset;
+        padding: f.rem(16);
+
+        ul {
+            flex-direction: row;
+            // gap: 0;
+            padding: 0;
+
+            li {
+                display: unset;
+
+                a {
+                    color: var(--d-grayish-violet);
+                    width: unset;
+
+                    &:hover {
+                        color: var(--x-d-violet);
+                    }
+                }
+
+                &:last-child {
+                    width: 150px;
+                }
+            }
+        }
+    }
 }
 
 .menu,
 .close-menu {
     cursor: pointer;
+
+    @include bp.breakpointMin(xmedium-screen) {
+        display: none;
+    }
 }
 
 .toggle-menu {

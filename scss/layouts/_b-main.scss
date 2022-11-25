@@ -2,7 +2,7 @@
 @use '../utils/functions' as f;
 
 main {
-    width: min(100%, f.rem(1440));
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,11 +10,26 @@ main {
 }
 
 section.intro {
+    width: 100%;
+    position: relative;
+    display: grid;
+    place-content: center;
+
+    .img {
+        margin-inline: auto;
+    }
+
     article {
         background-color: var(--d-violet);
         color: var(--x-l-gray);
         text-align: center;
         padding-block: f.rem(100);
+        width: 100%;
+
+        .text-container {
+            margin-inline: auto;
+            width: min(100%, f.rem(560));
+        }
         
         h1 {
             padding-inline: f.rem(16);
@@ -36,7 +51,57 @@ section.intro {
         background-image: url(../images/bg-pattern-intro-left-mobile.svg), url(../images/bg-pattern-intro-right-mobile.svg);
         background-repeat: no-repeat;
         background-position: top left, bottom right;
-        background-position-y: 0, 360px;
+    }
+
+    @include bp.breakpointMin(medium-screen) {
+        .img {
+            display: none;
+        }
+    }
+
+    @include bp.breakpointMin(large-screen) {
+        place-content: unset;
+        margin-bottom: f.rem(100);
+
+        .img {
+            display: block;
+            position: absolute;
+            width: min(35%, f.rem(500));
+            bottom: -20%;
+            right: 4%;
+
+            @include bp.breakpointMin(xlarge-screen) {
+                // position: absolute;
+                right: 10%;
+            }
+        }
+
+        article {
+            text-align: left;
+
+            .line {
+                display: block;
+                border-top: 1px solid #000;
+                width: 20%;
+                margin-bottom: f.rem(54);
+            }
+            
+            .text-container {
+                margin-left: 5%;
+            }
+            
+            h1 {
+                font-size: f.rem(75);
+            }
+
+            h1,
+            p {
+                padding: 0;
+            }
+            background-image: url(../images/bg-pattern-intro-left-desktop.svg), url(../images/bg-pattern-intro-right-desktop.svg);
+            background-repeat: no-repeat;
+            background-position: bottom left, top right;
+        }
     }
 }
 
@@ -58,6 +123,8 @@ section.features {
         gap: f.rem(64);
 
         article {
+            width: min(100%, f.rem(400));
+
             img {
                 width: 20%;
                 margin-inline: auto;
@@ -83,15 +150,49 @@ section.features {
         width: 30%;
         margin-inline: auto;
         margin-bottom: f.rem(32);
+        transition: width .3s ease;
     }
 
     background-image: url(../images/bg-pattern-intro-right-mobile.svg);
     background-repeat: no-repeat;
     background-position: top right;
     background-position-y: -120px;
+
+    @include bp.breakpointMin(medium-screen) {
+        background-image: none;
+    }
+
+    @include bp.breakpointMin(large-screen) {
+        padding-inline: 5%;
+        text-align: left;
+        margin-bottom: f.rem(100);
+
+        .line {
+            margin-left: 0;
+            width: 10%;
+        }
+
+        .article-container-features{
+            flex-direction: row;
+            align-items: unset;
+            justify-content: unset;
+            text-align: left;
+            gap: f.rem(32);
+
+            article {
+                img {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
 }
 
 section.more-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: min(90%, f.rem(1440));
     text-align: center;
     background-color: var(--d-violet); 
@@ -113,4 +214,24 @@ section.more-info {
     background-image: url(../images/bg-pattern-how-we-work-mobile.svg);
     background-repeat: no-repeat;
     background-position: top right;
+
+    @include bp.breakpointMin(large-screen) {
+        text-align: left;
+        justify-content: space-between;
+        flex-direction: row;
+        padding: f.rem(64);
+
+        h2 {
+            width: 50%;
+            font-size: f.rem(74);  
+            margin: 0;  
+        }
+    }
+
+    @include bp.breakpointMin(xlarge-screen) {
+        background-image: url(../images/bg-pattern-how-we-work-desktop.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 50%;
+    }
 }

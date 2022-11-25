@@ -1,3 +1,4 @@
+@use '../utils/breakpoints' as bp;
 @use '../utils/functions' as f;
 @use '../utils/fonts' as font;
 
@@ -16,6 +17,13 @@ footer {
     background-repeat: no-repeat;
     background-position: top center;
     background-size: contain;
+
+    @include bp.breakpointMin(medium-screen) {
+        background-image: url(../images/bg-pattern-footer-desktop.svg);
+        background-position: top left;
+        background-size: 50%;
+        padding-inline: 5%;
+    }
 }
 
 .footer-head {
@@ -34,19 +42,29 @@ footer {
         a .fa-brands {
             font-size: f.rem(28);
             color: var(--d-grayish-violet);
+
+            &:hover {
+                color: var(--x-d-violet);
+            }
         }
     }
 
-    .line {
-        width: 100%;
-        border-bottom: 1px solid var(--grayish-blue);
+    @include bp.breakpointMin(medium-screen) {
+        flex-direction: row;
+        justify-content: space-between;
     }
+}
+
+.footer-line {
+    width: 100%;
+    border-bottom: 1px solid var(--grayish-blue);
+    margin-bottom: f.rem(32);
 }
 
 .footer-nav {
     display: grid;
     place-content: center;
-    gap: f.rem(32);
+    gap: f.rem(64);
 
     article {
         display: flex;
@@ -68,17 +86,54 @@ footer {
             &:not(:last-child) {
                 margin-bottom: f.rem(16);
             }
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
+    }
+
+    @include bp.breakpointMin(medium-screen) {
+        grid-template-columns: repeat(2, 1fr);
+
+        article {
+            align-items: unset;
+            justify-content: unset;
+        }
+    }
+
+    @include bp.breakpointMin(large-screen) {
+        grid-template-columns: repeat(4, 1fr);
+        margin-right: auto;
+        gap: f.rem(150);
     }
 }
 
 .attribution { 
+    font-family: 'DM Serif Display', serif;
     position: absolute;
-    bottom: 1%;
-    font-size: 11px; 
+    bottom: 1%; 
     text-align: center;
 }
 
 .attribution a { 
-    color: hsl(228, 45%, 44%); 
+    color: var(--d-violet); 
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin-inline: auto;
+        width: 0;
+        height: 2px;
+        background-color: var(--d-violet); 
+        transition: width .3s ease;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
 }
